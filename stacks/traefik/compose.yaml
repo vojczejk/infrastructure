@@ -8,7 +8,7 @@ services:
       - 80:80
       - 443:443
       # (Optional) Enable Dashboard, don't do in production
-      - 8080:8080
+      # - 8080:8080
     volumes:
       - ${TRAEFIK_CONFIGDIR}:/etc/traefik
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -21,6 +21,8 @@ services:
         ipv4_address: ${TRAEFIK_INTERNAL_IP}
     dns:
       # Local DNS server serving the internal domain names
+      # Workaround some strange behavior when host system did not pass DNS config
+      #   to the container correctly
       - ${LOCAL_DNS_SERVER}
 
 networks:
