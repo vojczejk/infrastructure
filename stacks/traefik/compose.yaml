@@ -24,7 +24,6 @@ services:
       # Workaround some strange behavior when host system did not pass DNS config
       #   to the container correctly
       - ${LOCAL_DNS_SERVER}
-
 networks:
   traefik_net:
     external: true
